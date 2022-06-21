@@ -14,13 +14,12 @@
 
     <!-- sidebar menu -->
     <ul class="sidebar-menu">
-
         <li class="treeview <?php echo (($this->uri->segment(2)=="home" || $this->uri->segment(2)=="")?"active":null) ?>">
             <a href="<?php echo base_url('dashboard/home') ?>"><i class="ti-home"></i> <span><?php echo display('dashboard')?></span> 
             </a>
         </li>
-
-
+        
+        
 
         <!-- *************************************
         **********STATS OF CUSTOM MODULES*********
@@ -30,7 +29,7 @@
         $map  = directory_map($path);
         $HmvcMenu2   = array();
 		
-        //$modulecheck = $this->db->select("*")->from("tbl_module_purchasekey")->where('module','printershare')->order_by('mpid',"desc")->limit(1)->get()->row();
+        $modulecheck = $this->db->select("*")->from("tbl_module_purchasekey")->where('module','printershare')->order_by('mpid',"desc")->limit(1)->get()->row();
 		$HmvcMenu2["ordermanage"] = array(
     		"icon" => "<i class='fa fa-first-order' aria-hidden='true'></i>", 
 			"pos_invoice" => array("controller" => "order","method"=> "pos_invoice","permission" => "read"),
@@ -51,13 +50,14 @@
 			"unavailable_day" => array("controller" => "reservation","method" => "unavailablelist","permission" => "read"), 
 			"reservasetting" => array("controller" => "reservation","method" => "setting","permission" => "read"),   
 		);
+		
 		$HmvcMenu2["purchase"] = array(
     		"icon"=> "<i class='fa fa-shopping-cart' aria-hidden='true'></i>", 
 
    			"purchase_item" => array("controller" => "purchase","method" => "index","permission" => "read"),
-			"purchase_add" => array("controller" => "purchase","method"     => "create","permission" => "create"),
-	        "purchase_return" => array("controller" => "purchase","method" => "return_form","permission" => "create"),
-	        "return_invoice" => array("controller" => "purchase","method" => "return_invoice","permission" => "create"),
+			"purchase_add" => array("controller" => "purchase","method"  => "create","permission" => "create"),
+	     "purchase_return" => array("controller" => "purchase","method" => "return_form","permission" => "create"),
+	     "return_invoice" => array("controller" => "purchase","method" => "return_invoice","permission" => "create"),
 			"supplier_manage" => array("controller" => "supplierlist","method"     => "index","permission" => "read"), 
 			"supplier_ledger" => array("controller" => "supplierlist","method" => "supplier_ledger_report","permission" => "read"),
 			"stock_out_ingredients" => array("controller" => "purchase","method" => "stock_out_ingredients","permission" => "read"),
@@ -153,10 +153,10 @@
 			"city" => array("controller" => "country_city_list","method" => "citylist","permission" => "read"),
 			"commission" => array("controller" => "Commissionsetting","method"=> "payroll_commission","permission" => "create")    
 		); 
-		/*if(!empty($modulecheck)){
+		if(!empty($modulecheck)){
 			
 			$HmvcMenu2["setting"]["kitchen_setting"]['kitchen_printers']=array('controller' => 'kitchensetting','method' => 'printersetting','permission' => 'read');
-		}*/
+		}
 		$HmvcMenu2["accounts"] = array(
     		"icon"           => "<i class='ti-bag'></i>", 
    			"c_o_a" => array("controller" => "accounts","method"=> "show_tree","permission" => "read"), 
