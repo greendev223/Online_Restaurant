@@ -182,7 +182,7 @@ if ($dbvalid===true) {
                             <div class="outer-container">
                                 <div id="wizard" class="aiia-wizard">
                                     <?php 
-                                    if (!isset($_GET['step1']) || (!isset($_GET['step1']) && !isset($_GET['step2']) && !isset($_GET['step3']) && !isset($_GET['step4']) && !isset($_GET['complete']))) {
+                                    if (isset($_GET['step1']) || (!isset($_GET['step1']) && !isset($_GET['step2']) && !isset($_GET['step3']) && !isset($_GET['step4']) && !isset($_GET['complete']))) {
                                             $activeClass = 'active';
                                         } 
                                     ?>

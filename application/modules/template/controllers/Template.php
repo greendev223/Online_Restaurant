@@ -20,7 +20,6 @@ class Template extends MX_Controller {
 		$data['setting'] = $this->template_model->setting();
 		$data['sdsetting'] = $this->template_model->read('*', 'tbl_soundsetting', array('soundid' => 1));
 		$data['versioncheck'] = $this->template_model->read('*', 'tbl_version_checker', array('vid' => 1));
-		$data['counter'] = $this->template_model->read('*', 'user', array('counter'=>1));
 		$this->load->view('layout', $data);
 	}
  	

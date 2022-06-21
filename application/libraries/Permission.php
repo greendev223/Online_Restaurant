@@ -118,11 +118,10 @@ class Permission
 	protected function checkModule($module = NULL)
 	{ 
 		$permission = $this->ci->session->userdata('permission');
-		$superadmin = $this->ci->session->userdata('superadmin');
 		$isAdmin    = $this->ci->session->userdata('isAdmin');
 		$isLogIn    = $this->ci->session->userdata('isLogIn');
 
-		if ($isLogIn && $superadmin && $isAdmin ) { 
+		if ($isLogIn && $isAdmin) { 
 			return true;
 		} else if($isLogIn) { 
 
@@ -156,11 +155,10 @@ class Permission
 		
 		
 		$permission = $this->ci->session->userdata('label_permission');
-		$superadmin = $this->ci->session->userdata('superadmin');
 		$isAdmin    = $this->ci->session->userdata('isAdmin');
 		$isLogIn    = $this->ci->session->userdata('isLogIn');
 
-		if ($isLogIn && $superadmin && $isAdmin) { 
+		if ($isLogIn && $isAdmin) { 
 			return true;
 		} else if($isLogIn) {
 			if (($permission!=null)) {
@@ -187,11 +185,10 @@ class Permission
 	protected function checkMethod($module = null, $method = null)
 	{ 
 		$permission = $this->ci->session->userdata('permission');
-		$superadmin = $this->ci->session->userdata('superadmin');
 		$isAdmin    = $this->ci->session->userdata('isAdmin');
 		$isLogIn    = $this->ci->session->userdata('isLogIn');
 
-		if ($isLogIn && $superadmin && $isAdmin) {
+		if ($isLogIn && $isAdmin) {
 			//action of administrator
 			return true;
 		} else if($isLogIn) {
@@ -238,7 +235,6 @@ class Permission
 	protected function checkLebel_permission_type($label = null, $method = null)
 	{ 
 		$permission = $this->ci->session->userdata('label_permission');
-		$superadmin = $this->ci->session->userdata('superadmin');
 		$isAdmin    = $this->ci->session->userdata('isAdmin');
 		$isLogIn    = $this->ci->session->userdata('isLogIn');
 

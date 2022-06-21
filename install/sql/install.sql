@@ -17,7 +17,6 @@ CREATE TABLE IF NOT EXISTS `user` (
   `counter` int(11) DEFAULT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 1,
   `is_admin` tinyint(4) NOT NULL DEFAULT 0,
-  `super_admin` tinyint(4) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=178 DEFAULT CHARSET=utf8;
 
@@ -5541,13 +5540,7 @@ CREATE TABLE `items_food_waste` (
    PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-DROP TABLE IF EXISTS `facebook_settings`;
-CREATE TABLE `facebook_settings` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `app_id` varchar(100) DEFAULT  NULL,
-  `app_secret` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 
 

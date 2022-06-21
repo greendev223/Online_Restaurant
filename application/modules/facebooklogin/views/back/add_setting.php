@@ -16,15 +16,15 @@
                    
                      <div class="col-lg-6">
                     <div class="form-group row">
-                        <label for="firstname" class="col-sm-4 col-form-label"><?php echo ('api_key')?> *</label>
+                        <label for="firstname" class="col-sm-4 col-form-label"><?php echo display('api_key')?> *</label>
                         <div class="col-sm-8">
-                            <input name="app_id" class="form-control" type="text" placeholder="<?php echo ('api_key')?>" id="api_key"  value="<?php echo (!empty($facebookloginbackapi->app_id)?$facebookloginbackapi->app_id:null) ?>">
+                            <input name="app_id" class="form-control" type="text" placeholder="<?php echo display('api_key')?>" id="api_key"  value="<?php echo (!empty($facebookloginbackapi->app_id)?$facebookloginbackapi->app_id:null) ?>">
                         </div>
                     </div>
                      <div class="form-group row">
-                        <label for="firstname" class="col-sm-4 col-form-label"><?php echo ('secret_key')?> *</label>
+                        <label for="firstname" class="col-sm-4 col-form-label"><?php echo display('secret_key')?> *</label>
                         <div class="col-sm-8">
-                            <input name="app_secret" class="form-control" type="text" placeholder="<?php echo ('secret_key')?>" id="secret_key"  value="<?php echo (!empty($facebookloginbackapi->app_secret)?$facebookloginbackapi->app_secret:null) ?>">
+                            <input name="app_secret" class="form-control" type="text" placeholder="<?php echo display('secret_key')?>" id="secret_key"  value="<?php echo (!empty($facebookloginbackapi->app_secret)?$facebookloginbackapi->app_secret:null) ?>">
                         </div>
                     </div>
                     </div>

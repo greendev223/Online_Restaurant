@@ -264,9 +264,9 @@ class Order extends MX_Controller {
 	   echo Modules::run('template/layout', $data); 
     }
 	public function pos_invoice(){
-		//  if($this->permission->method('ordermanage','create')->access()==FALSE){
-		// 	redirect('dashboard/home');
-		// }
+		 if($this->permission->method('ordermanage','create')->access()==FALSE){
+			redirect('dashboard/home');
+		}
 		  
 		   $data['title']="posinvoiceloading";
 		   $saveid=$this->session->userdata('id');
