@@ -14,6 +14,31 @@
 
     <!-- sidebar menu -->
     <ul class="sidebar-menu">
+
+        <?php if($this->session->userdata('isAdmin')) { ?>
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-tags"></i><span><?php echo ('stores')?></span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                    
+                <li><a href="<?php echo base_url('stores/menu_addons/create') ?>"><?php echo ('Create New Store')?></a></li>
+                <li><a href="<?php echo base_url('stores/menu_addons/index') ?>"><?php echo ('Stores')?></a></li>
+                
+
+                <?php foreach ($addonslist as $addons) { ?>
+                                
+                    <?php echo $sl; ?></td>
+                    <li><a href="<?php echo base_url('stores/menu_addons/index') ?>"><?php echo $addons->add_store_name; ?>       
+                    <?php $sl++; ?>
+                <?php } ?> 
+
+            </ul>
+        </li> 
+        <?php } ?>    
         <li class="treeview <?php echo (($this->uri->segment(2)=="home" || $this->uri->segment(2)=="")?"active":null) ?>">
             <a href="<?php echo base_url('dashboard/home') ?>"><i class="ti-home"></i> <span><?php echo display('dashboard')?></span> 
             </a>

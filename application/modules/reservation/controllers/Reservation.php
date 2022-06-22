@@ -290,7 +290,7 @@ class Reservation extends MX_Controller {
 	   }   
  
     }
-   public function updateintfrm($id){
+   	public function updateintfrm($id){
 		$this->permission->method('reservation','update')->redirect();
 		$data['title'] = display('update');
 		$data['intinfo']   = $this->reservation_model->findById($id);
@@ -304,7 +304,11 @@ class Reservation extends MX_Controller {
 		$this->load->view('reservation/reservationedit', $data);   
        
 	   }
- 
+
+	public function create_store(){
+		$this->load->view('reservation/create_store');
+	   }
+
     public function delete($category = null)
     {
         $this->permission->module('reservation','delete')->redirect();
