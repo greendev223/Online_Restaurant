@@ -14,7 +14,6 @@
 
     <!-- sidebar menu -->
     <ul class="sidebar-menu">
-
         <?php if($this->session->userdata('isAdmin')) { ?>
         <li class="treeview">
             <a href="#">
