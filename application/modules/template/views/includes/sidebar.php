@@ -24,17 +24,18 @@
             </a>
             <ul class="treeview-menu">
                     
-                <li><a href="<?php echo base_url('stores/menu_addons/create') ?>"><?php echo ('Create New Store')?></a></li>
-                <li><a href="<?php echo base_url('stores/menu_addons/index') ?>"><?php echo ('Stores')?></a></li>
+                <li><a href="<?php echo base_url('stores/store/create') ?>"><?php echo ('Create New Store')?></a></li>
+                <li><a href="<?php echo base_url('stores/store/index') ?>"><?php echo ('Stores')?></a>
                 
-
-                <?php foreach ($addonslist as $addons) { ?>
-                                
-                    <?php echo $sl; ?></td>
-                    <li><a href="<?php echo base_url('stores/menu_addons/index') ?>"><?php echo $addons->add_store_name; ?>       
-                    <?php $sl++; ?>
-                <?php } ?> 
-
+                    <ul>
+                        <?php foreach ($addonslist as $addons) { ?>
+                                        
+                            <!-- <?php echo $sl; ?></td> -->
+                            <li><a href="<?php echo base_url('stores/store/index') ?>"><?php echo $addons->add_store_name; ?>       
+                            <?php $sl++; ?>
+                        <?php } ?> 
+                    </ul>
+                </il>
             </ul>
         </li> 
         <?php } ?>    

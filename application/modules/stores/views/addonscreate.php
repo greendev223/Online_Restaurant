@@ -10,7 +10,7 @@
 
 
                 <?php  
-				echo form_open_multipart("stores/menu_addons/create") ?>
+				echo form_open_multipart("stores/store/create") ?>
                     
                    <?php  echo form_hidden('id',$this->session->userdata('id')); ?>
                      <?php echo form_hidden('add_store_id', (!empty($addonsinfo->add_on_id)?$addonsinfo->add_on_id:null)) ?>

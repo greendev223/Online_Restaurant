@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Menu_addons extends MX_Controller {
+class Store extends MX_Controller {
     
     public function __construct()
     {
@@ -16,13 +16,13 @@ class Menu_addons extends MX_Controller {
     public function index()
     {
         
-		$this->permission->method('store','read')->redirect();
-        $data['title']    = display('addons_list'); 
+		$this->permission->method('stores','read')->redirect();
+        $data['title']    = "Store list"; 
               
         #
         #pagination starts
         #
-        $config["base_url"] = base_url('store/menu_addons/index');
+        $config["base_url"] = base_url('stores/store/index');
         $config["total_rows"]  = $this->addons_model->count_addons();
         $config["per_page"]    = 25;
         $config["uri_segment"] = 4;
@@ -56,7 +56,7 @@ class Menu_addons extends MX_Controller {
         #
         #pagination ends
         #   
-        $data['module'] = "store";
+        $data['module'] = "stores";
         $data['page']   = "addonslist";   
         echo Modules::run('template/layout', $data); 
     }
@@ -64,18 +64,18 @@ class Menu_addons extends MX_Controller {
 	
     public function create($id = null)
     {
-	  $this->permission->method('store','create')->redirect();
-	  $data['title'] = display('add_adons');
-	  $this->form_validation->set_rules('addstorename', display('addstorename')  ,'required|max_length[100]');
-	  $this->form_validation->set_rules('addstoreprice', display('price')  ,'required');
+	  $this->permission->method('stores','create')->redirect();
+	  $data['title'] = "Store create";
+	  $this->form_validation->set_rules('addstoresname', display('addonsname')  ,'required|max_length[100]');
+	  $this->form_validation->set_rules('addstoresprice', display('price')  ,'required');
 	  $this->form_validation->set_rules('status', display('status')  ,'required');
 	  
 	   
 	   $savedid=$this->session->userdata('id');
 	   $data['addons']   = (Object) $postData = [
-	   'add_store_id'    => $this->input->post('add_store_id',true),
-	   'add_store_name'  => $this->input->post('addstorename',true), 
-	   'price'           => $this->input->post('addstoreprice',true),
+	   'add_store_id'     => $this->input->post('add_store_id',true),
+	   'add_store_name'     	=> $this->input->post('addstoresname',true), 
+	   'price'           =>$this->input->post('addstoresprice',true),
 	   'is_active'   => $this->input->post('status',true),
 	  ];
 	   $taxsettings = $this->taxchecking();
@@ -91,8 +91,8 @@ class Menu_addons extends MX_Controller {
 		}
 	 
 	  if ($this->form_validation->run()) { 
-	   if (empty($this->input->post('add_on_id'))) {
-		$this->permission->method('store','create')->redirect();
+	   if (empty($this->input->post('add_store_id'))) {
+		$this->permission->method('stores','create')->redirect();
 	   $logData = [
 	   'action_page'         => "Add Add-ons",
 	   'action_done'     	 => "Insert Data", 
@@ -103,14 +103,14 @@ class Menu_addons extends MX_Controller {
 		if ($this->addons_model->addons_create($postData)) { 
 		$this->logs_model->log_recorded($logData);
 		 $this->session->set_flashdata('message', display('save_successfully'));
-		 redirect('store/menu_addons/create');
+		 redirect('stores/store/create');
 		} else {
 		 $this->session->set_flashdata('exception',  display('please_try_again'));
 		}
-		redirect("store/menu_addons/create"); 
+		redirect("stores/store/create"); 
 	
 	   } else {
-		$this->permission->method('store','update')->redirect();
+		$this->permission->method('stores','update')->redirect();
 		if(empty($img)){
 			$img=$this->input->post('old_image');
 			}
@@ -128,7 +128,7 @@ class Menu_addons extends MX_Controller {
 		} else {
 		$this->session->set_flashdata('exception',  display('please_try_again'));
 		}
-		redirect("store/menu_addons/create/".$postData['add_on_id']);  
+		redirect("stores/store/create/".$postData['add_store_id']);  
 	   }
 	  } else { 
 	  $data['taxitems'] = $this->taxchecking();
@@ -136,7 +136,7 @@ class Menu_addons extends MX_Controller {
 		$data['title'] = display('update_adons');
 		$data['addonsinfo']   = $this->addons_model->findById($id);
 	   }
-	   $data['module'] = "store";
+	   $data['module'] = "stores";
 	   $data['page']   = "addonscreate";   
 	   echo Modules::run('template/layout', $data); 
 	   }   
@@ -146,7 +146,8 @@ class Menu_addons extends MX_Controller {
  
     public function delete($addons = null)
     {
-        $this->permission->module('itemmanage','delete')->redirect();
+        $this->permission->module('stores','delete')->redirect();
+		
 		$logData = [
 	   'action_page'         => "Add-ons List",
 	   'action_done'     	 => "Delete Data", 
@@ -162,7 +163,7 @@ class Menu_addons extends MX_Controller {
 			#set exception message
 			$this->session->set_flashdata('exception',display('please_try_again'));
 		}
-		redirect('itemmanage/menu_addons/index');
+		redirect('stores/store/index');
     }
 	private function taxchecking()
     {
@@ -188,7 +189,7 @@ class Menu_addons extends MX_Controller {
         #
         #pagination starts
         #
-        $config["base_url"] = base_url('itemmanage/menu_addons/assignaddons');
+        $config["base_url"] = base_url('stores/store/assignaddons');
         $config["total_rows"]  = $this->addons_model->count_menuaddons();
         $config["per_page"]    = 25;
         $config["uri_segment"] = 4;
@@ -226,7 +227,7 @@ class Menu_addons extends MX_Controller {
         #
         #pagination ends
         #   
-        $data['module'] = "itemmanage";
+        $data['module'] = "stores";
         $data['page']   = "assignaddons";   
         echo Modules::run('template/layout', $data); 
     }
@@ -234,7 +235,7 @@ class Menu_addons extends MX_Controller {
 	
     public function assignaddonscreate($id = null)
     {
-	  $this->permission->method('itemmanage','create')->redirect();
+	  $this->permission->method('stores','create')->redirect();
 	  $data['title'] = display('assign_adons');
 	  $this->form_validation->set_rules('addonsid', display('addonsname')  ,'required');
 	  $this->form_validation->set_rules('menuid', display('item_name')  ,'required');
@@ -251,7 +252,7 @@ class Menu_addons extends MX_Controller {
 	 
 	  if ($this->form_validation->run()) { 
 	   if (empty($this->input->post('row_id'))) {
-		$this->permission->method('itemmanage','create')->redirect();
+		$this->permission->method('stores','create')->redirect();
 	   $logData = [
 	   'action_page'         => "Add-ons Assign",
 	   'action_done'     	 => "Insert Data", 
@@ -262,11 +263,11 @@ class Menu_addons extends MX_Controller {
 		if ($this->addons_model->menuaddons_create($postData)) { 
 		$this->logs_model->log_recorded($logData);
 		 $this->session->set_flashdata('message', display('save_successfully'));
-		 redirect('itemmanage/menu_addons/assignaddons');
+		 redirect('stores/store/assignaddons');
 		} else {
 		 $this->session->set_flashdata('exception',  display('please_try_again'));
 		}
-		redirect("itemmanage/menu_addons/assignaddons"); 
+		redirect("stores/store/assignaddons"); 
 	
 	   } else {
 		$this->permission->method('itemmanage','update')->redirect();
@@ -288,14 +289,14 @@ class Menu_addons extends MX_Controller {
 		} else {
 		$this->session->set_flashdata('exception',  display('please_try_again'));
 		}
-		redirect("itemmanage/menu_addons/assignaddons");  
+		redirect("stores/store/assignaddons");  
 	   }
 	  } else { 
 	   if(!empty($id)) {
 		$data['title'] = display('update_adons');
 		$data['addonsinfo']   = $this->addons_model->findById($id);
 	   }
-	   $data['module'] = "itemmanage";
+	   $data['module'] = "stores";
 	   $data['page']   = "assignaddons";   
 	   echo Modules::run('template/layout', $data); 
 	   }   
@@ -308,15 +309,15 @@ class Menu_addons extends MX_Controller {
 		$data['addonsinfo']   = $this->addons_model->findBymenuaddons($id);
 		$data['menudropdown']   =  $this->addons_model->menu_dropdown();
 		$data['addonsdropdown']   =  $this->addons_model->addons_dropdown();
-        $data['module'] = "itemmanage";  
+        $data['module'] = "stores";  
         $data['page']   = "assignaddonsedit";
-		$this->load->view('itemmanage/assignaddonsedit', $data);   
+		$this->load->view('stores/assignaddonsedit', $data);   
     
 	   }
  
     public function assignaddonsdelete($addons = null)
     {
-        $this->permission->module('itemmanage','delete')->redirect();
+        $this->permission->module('stores','delete')->redirect();
 		$logData = [
 	   'action_page'         => "Add-ons List",
 	   'action_done'     	 => "Delete Data", 
@@ -332,7 +333,7 @@ class Menu_addons extends MX_Controller {
 			#set exception message
 			$this->session->set_flashdata('exception',display('please_try_again'));
 		}
-		redirect('itemmanage/menu_addons/assignaddons');
+		redirect('stores/store/assignaddons');
     }
  
 }
