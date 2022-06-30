@@ -30,7 +30,6 @@ if (!function_exists('get_website_settings')) {
     {
         $CI    = &get_instance();
         $CI->load->database();
-
         $CI->db->where('key', $key);
         $result = $CI->db->get('website_settings')->row()->value;
         return $result;
