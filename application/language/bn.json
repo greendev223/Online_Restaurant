@@ -256,5 +256,14 @@
     "not_found": "Not found",
     "please_login_first": "Please login first",
     "added_to_the_cart": "Added to the cart",
-    "do_you_want_to_add_your_own_restaurants_and_food_menus": "Do you want to add your own restaurants and food menus"
+    "do_you_want_to_add_your_own_restaurants_and_food_menus": "Do you want to add your own restaurants and food menus",
+    "your_orders": "Your orders",
+    "quantity": "Quantity",
+    "sub_total": "Sub total",
+    "total_bill": "Total bill",
+    "total_menu_price": "Total menu price",
+    "delivery_charge_for": "Delivery charge for",
+    "grand_total": "Grand total",
+    "checkout_order": "Checkout order",
+    "choose_delivery_address": "Choose delivery address"
 }
