@@ -7,7 +7,7 @@
         <div class="swiper-wrapper">
             <?php for ($counter = 0; $counter < 6; $counter++): ?>
                 <div class="swiper-slide">
-                    <?php $gallery_image = isset($restaurant_galleries[$counter]) ? $restaurant_galleries[$counter] : "placeholder.png"; ?>
+                    <?php $gallery_image = isset($restaurant_galleries[$counter]) ? $restaurant_galleries[$counter] : "placeholder.jpg"; ?>
                     <a href="<?php echo base_url('uploads/restaurant/gallery/'.sanitize($gallery_image)); ?>" class="grid image-link">
                         <img src="<?php echo base_url('uploads/restaurant/gallery/'.sanitize($gallery_image)); ?>" class="img-fluid" alt="#">
                     </a>
