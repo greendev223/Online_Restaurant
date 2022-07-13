@@ -123,12 +123,12 @@ class Auth extends Base
 		if ($this->session->userdata('is_logged_in')) {
 			redirect(site_url('dashboard'), 'refresh');
 		}
-		$validate_recaptcha = $this->validate_captcha();
-		if ($validate_recaptcha) {
+		// $validate_recaptcha = $this->validate_captcha();
+		// if ($validate_recaptcha) {
 			$this->auth_model->registration();
-		} else {
-			error(get_phrase('recaptcha_validation_failed'), $_SERVER['HTTP_REFERER']);
-		}
+		// } else {
+		// 	error(get_phrase('recaptcha_validation_failed'), $_SERVER['HTTP_REFERER']);
+		// }
 	}
 
 	/**
