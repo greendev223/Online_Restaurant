@@ -1,12 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-/**
- * Product name : FoodMob
- * Date : 22 - August - 2020
- * Author : TheDevs
- * Orders Controller controlls the task for orders
- */
+
 
 include 'Authorization.php';
 class Orders extends Authorization

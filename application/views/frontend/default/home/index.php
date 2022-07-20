@@ -52,7 +52,7 @@
                         <div class="find-place-img_wrap">
                             <div class="grid">
                                 <figure class="effect-ruby">
-                                    <img src="<?php echo base_url('uploads/cuisine/' . sanitize($featured_cuisine['thumbnail'])); ?>" class="img-fluid" alt="<?php echo site_phrase('featured_cuisine'); ?>" />
+                                    <img src="<?php echo base_url('uploads/cuisine/' . sanitize($featured_cuisine['thumbnail'])); ?>" class="img-fluid"  alt="<?php echo site_phrase('featured_cuisine'); ?>" />
                                     <figcaption>
                                         <h5><?php echo sanitize($featured_cuisine['name']); ?></h5>
                                         <p><?php echo count($this->restaurant_model->get_restaurants_by_cuisine(sanitize($featured_cuisine['id']))) . ' ' . site_phrase('restaurants'); ?></p>

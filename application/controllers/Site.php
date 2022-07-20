@@ -1,12 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-/**
- * Product name : FoodMob
- * Date : 14 - July - 2020
- * Author : TheDevs
- * Site Controller controlls the The Frontend Stuffs
- */
+
 
 include 'Base.php';
 class Site extends Base
